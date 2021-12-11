@@ -2,22 +2,21 @@
 
 ## Čo treba nainštalovať
  * docker
- * logstash [logstash](https://www.elastic.co/downloads/logstash)
-   * logstash bude priamo čítať log dáta z adresára. Reálne filebeat monitoruje dáta a posiela na logstash, ktorý beží spolu s elastikom
+ * logstash [logstash download](https://www.elastic.co/downloads/logstash)
+   logstash treba rozbaliť do adresára `logstash`, tak aby sa dal spustiť `.\logstash\bin\logstash`
 
-Logstash treba rozbalit v tom istom adresari ako repo.
-
+ 
 ## Spustenie elastiku a kibany v dockri
 ```bash
 docker-compose up
 ```
 
-Skontrolujeme ci elastic bezi
+Skontrolujeme či elastic funguje
 ```bash
 curl localhost:9200/_cluster/health?pretty
 ```
 
-Kibana http://localhost:5601
+Kibana je dostupná na http://localhost:5601
 
 ```plantuml
 @startuml
@@ -37,12 +36,11 @@ folder "atologs" {
 
  [logstash] --> [ob.log]
  [Elasticsearch] --> [logstash]
+ 
+ @enduml
 ```
 
 # Logstash
- * Download logstash [download](https://www.elastic.co/downloads/logstash)
-    Logstash na Windowse  distribuuje aj javu, ktoru potrebuje ako runtime https://www.elastic.co/guide/en/logstash/current/running-logstash-windows.html 
-
  * V súbore `logstash.conf` treba nastaviť na riadku 4 absolútnu cestu k logom :-( 
 
 ```
