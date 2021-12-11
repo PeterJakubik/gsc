@@ -33,15 +33,15 @@ Vytvorením logstash konfiguráciu môžeme načítať dáta z logu a poslať ic
 docker-compose up
 ```
 
-Skontrolujeme či elastic funguje
+Skontrolujeme či elastic beží
 ```bash
-curl localhost:9200/_cluster/health?pretty
+curl http://localhost:9200/_cluster/health?pretty
 ```
 
 Kibana je dostupná na http://localhost:5601
 
 
-# Logstash
+## Logstash
 
 ---
 **NOTE**
@@ -56,3 +56,6 @@ Logstash sa distribuuje s javou, ak je na windows problém, treba pozrieť https
  .\logstash\bin\logstash -f .\logstash.conf
 ```
 
+## Kibana
+* Discover, nastaviť filter [Last 30 days], pretože dáta sú zo dňa 2021-11-27
+* parsed_json.v_TRAIN_ATO -> Visualize -> Zmeniť typ grafu z 'Bar vertical' -> 'Line'
