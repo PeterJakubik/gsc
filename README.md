@@ -43,7 +43,7 @@ folder "atologs" {
  * Download logstash [download](https://www.elastic.co/downloads/logstash)
     Logstash na Windowse  distribuuje aj javu, ktoru potrebuje ako runtime https://www.elastic.co/guide/en/logstash/current/running-logstash-windows.html 
 
- * V súbore `logstash.conf` treba nastaviť na riadku 3 absolútnu cestu k logom :-( 
+ * V súbore `logstash.conf` treba nastaviť na riadku 4 absolútnu cestu k logom :-( 
 
 ```
  .\logstash\bin\logstash -f .\logstash.conf
