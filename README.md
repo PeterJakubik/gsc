@@ -6,7 +6,7 @@
    logstash treba rozbaliť do adresára `logstash`, tak aby sa dal spustiť `.\logstash\bin\logstash`
 
 ## Component diagram
-![Component Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/PeterJakubik/gsc/master/UML/diagram.puml)
+![Component Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/PeterJakubik/gsc/master/diagram.puml)
 
  
 ## Spustenie elastiku a kibany v dockri
