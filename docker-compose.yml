@@ -1,0 +1,45 @@
+version: '3.2'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:${TAG}
+    ports:
+      - 9200:9200
+    networks: ['esnet']
+    environment: 
+      - discovery.type=single-node
+      - cluster.name=${CLUSTER_NAME}
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - ELASTIC_PASSWORD=$ELASTIC_PASSWORD
+      #- xpack.security.enabled=$ELASTIC_SECURITY
+      # fleet
+      #- xpack.security.authc.api_key.enabled=$ELASTIC_SECURITY
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - data_es:/usr/share/elasticsearch/data
+      
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:${TAG}
+    ports:
+      - 5601:5601
+    environment:
+      #- ELASTICSEARCH_URL=http://elasticsearch:9200
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=$ELASTIC_PASSWORD
+      #- xpack.security.enabled=true
+      #- xpack.encryptedSavedObjects.encryptionKey="et9TKMUP6drnq3DjL9Ewq583H6J2DnJr"
+    networks: ['esnet']
+    depends_on: 
+      - elasticsearch
+
+networks: {esnet: {}}
+
+volumes:
+  data_es:
+     driver: local 
+
