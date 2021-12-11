@@ -1,0 +1,21 @@
+@startuml Elastic
+
+package "Docker" {
+
+    note top of HTTP_KIBANA: 5601
+    HTTP_KIBANA - [Kibana]
+
+    note bottom of HTTP_ELASTIC: 9200
+    HTTP_ELASTIC - [Elasticsearch]
+}
+
+folder "atologs" {
+    ["ob.log"]
+}
+
+[Logstash] --> HTTP_ELASTIC
+[Kibana] --> HTTP_ELASTIC
+[Browser] --> HTTP_KIBANA
+[Logstash] ..> ["ob.log"] : reads
+
+ @enduml

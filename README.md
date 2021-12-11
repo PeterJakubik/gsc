@@ -5,6 +5,9 @@
  * logstash [logstash download](https://www.elastic.co/downloads/logstash)
    logstash treba rozbaliť do adresára `logstash`, tak aby sa dal spustiť `.\logstash\bin\logstash`
 
+## Component diagram
+![Component Diagram](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/PeterJakubik/gsc/master/UML/diagram.puml)
+
  
 ## Spustenie elastiku a kibany v dockri
 ```bash
@@ -18,27 +21,6 @@ curl localhost:9200/_cluster/health?pretty
 
 Kibana je dostupná na http://localhost:5601
 
-```plantuml
-@startuml
-
-package "Elastic + kibana" {
-    API(9200) - [Elasticsearch]
-    API(5601) - [Kibana]
-}
-
-package "Logstash" {
- [logstash]
-}
-
-folder "atologs" {
-  [ob.log]
-}
-
- [logstash] --> [ob.log]
- [Elasticsearch] --> [logstash]
- 
- @enduml
-```
 
 # Logstash
  * V súbore `logstash.conf` treba nastaviť na riadku 4 absolútnu cestu k logom :-( 
