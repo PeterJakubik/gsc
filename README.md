@@ -37,6 +37,9 @@ docker-compose up
 Skontrolujeme či elastic beží
 ```bash
 curl http://localhost:9200/_cluster/health?pretty
+
+# Nody
+curl http://localhost:9200/_cat/nodes?v
 ```
 
 Kibana je dostupná na http://localhost:5601
@@ -68,8 +71,9 @@ Vytvorenie index patternu v kibane:
 1. nastaviť _Timestamp field_ na `@timestamp`
 1. **Create index**
 
-Dáta sú zo dňa 27.Nov.2021 tak treba v _Discover_ nastaviť časový filter tak aby sa zobrazili.
-* parsed_json.v_TRAIN_ATO -> _Visualize_ -> Zmeniť typ grafu z 'Bar vertical' -> 'Line'
+Dáta sú zo dňa 27.Nov.2021 tak treba v _Discover_ nastaviť časový filter tak aby sa zobrazili (last 30 days)
+* parsed_json.v_TRAIN_ATO -> _Visualize_ -> Zmeniť typ grafu z 'Bar vertical' -> 'Line' -> _Save_
+* parsed_json.v_TRAIN_ATO -> _Visualize_ -> _Median_ zmeniť na _Average_
 
 ## Bonus
 Rado Ondas z ELastiku na https://radoondas.io/   
